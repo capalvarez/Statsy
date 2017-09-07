@@ -1,11 +1,11 @@
 #ifndef STATSY_MESHLOADER_H
 #define STATSY_MESHLOADER_H
 
-#include <statsy/geometry/Mesh.h>
+#include <statsy/models/Mesh.h>
 
 class MeshLoader{
 public:
-    virtual std::vector<Polygon> getPolygons() = 0;
+    virtual Mesh getMesh(std::string fileName) = 0;
 };
 
 #endif

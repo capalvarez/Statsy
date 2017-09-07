@@ -1,8 +1,11 @@
 #ifndef STATSY_VEAMYLOADER_H
 #define STATSY_VEAMYLOADER_H
 
-class VeamyLoader {
+#include "MeshLoader.h"
 
+class VeamyLoader: public MeshLoader {
+public:
+    Mesh getMesh();
 };
 
 #endif

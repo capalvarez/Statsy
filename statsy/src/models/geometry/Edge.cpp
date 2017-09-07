@@ -1,4 +1,4 @@
-#include <statsy/geometry/Edge.h>
+#include <statsy/models/geometry/Edge.h>
 
 
 Edge::Edge(Vertex v1, Vertex v2) {

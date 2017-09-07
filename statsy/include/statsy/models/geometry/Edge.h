@@ -1,7 +1,7 @@
 #ifndef STATSY_EDGE_H
 #define STATSY_EDGE_H
 
-#include <statsy/geometry/Vertex.h>
+#include <statsy/models/geometry/Vertex.h>
 #include <cmath>
 #include <stdexcept>
 

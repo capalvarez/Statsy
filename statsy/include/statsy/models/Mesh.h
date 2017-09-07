@@ -5,17 +5,14 @@
 #include <wingdi.h>
 #include <statsy/report/Report.h>
 #include <statsy/report/Reportable.h>
-#include "Polygon.h"
-
-class MeshLoader;
+#include <statsy/models/geometry/Polygon.h>
 
 class Mesh {
 private:
-    std::vector<Polygon> polygons;
+    std::vector<MeshElement*> elements;
 public:
     Mesh();
     Mesh(const Mesh& other);
-    void load_mesh(MeshLoader* loader);
     std::vector<Report> getReports(std::vector<Reportable*> toReport);
 };
 

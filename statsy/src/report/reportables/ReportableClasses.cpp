@@ -1,6 +1,6 @@
 #include <statsy/report/Reportable.h>
 #include <vector>
-#include <statsy/geometry/Polygon.h>
+#include <statsy/models/geometry/Polygon.h>
 #include <statsy/report/reportables/Value.h>
 
 class AngleReport: public Reportable<Polygon>{
@@ -42,3 +42,4 @@ public:
         return p.numberOfSides();
     }
 };
+

@@ -2,11 +2,12 @@
 #define STATSY_POLYGON_H
 
 #include <vector>
-#include <statsy/geometry/Vertex.h>
-#include <statsy/geometry/Edge.h>
-#include <statsy/geometry/utils/utils.h>
+#include <statsy/models/geometry/Vertex.h>
+#include <statsy/models/geometry/Edge.h>
+#include <statsy/models/utils/utils.h>
+#include <statsy/models/MeshElement.h>
 
-class Polygon {
+class Polygon: public MeshElement {
 private:
     std::vector<Edge> edges;
     double area;

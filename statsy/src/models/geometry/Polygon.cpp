@@ -1,4 +1,4 @@
-#include <statsy/geometry/Polygon.h>
+#include <statsy/models/geometry/Polygon.h>
 
 Polygon::Polygon(std::vector<Edge> e, std::vector<Vertex> v) {
     this->edges.assign(e.begin(), e.end());
