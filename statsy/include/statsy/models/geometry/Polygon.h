@@ -12,7 +12,7 @@ private:
     std::vector<Edge> edges;
     double area;
 
-    void computeArea(std::vector<Vertex> vertices);
+    double computeArea(std::vector<Vertex> vertices);
 public:
     Polygon(std::vector<Edge> e, std::vector<Vertex> v);
 

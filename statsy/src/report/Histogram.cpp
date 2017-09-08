@@ -14,6 +14,7 @@ Histogram::Histogram(double min, double max, int bins) {
 }
 
 void Histogram::addValue(double val) {
+    //TODO: What if they are equal
     auto lower = std::lower_bound(binLimits.begin(), binLimits.end(), val);
     int dist = std::distance(binLimits.begin(), lower);
 

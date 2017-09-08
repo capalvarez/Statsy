@@ -2,11 +2,11 @@
 
 Polygon::Polygon(std::vector<Edge> e, std::vector<Vertex> v) {
     this->edges.assign(e.begin(), e.end());
-    computeArea(v);
+    this->area = computeArea(v);
 }
 
-void Polygon::computeArea(std::vector<Vertex> vertices) {
-    this->area = utils::area(vertices);
+double Polygon::computeArea(std::vector<Vertex> vertices) {
+    return utils::area(vertices);
 }
 
 double Polygon::getArea() {

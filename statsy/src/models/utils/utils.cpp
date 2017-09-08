@@ -8,7 +8,7 @@ namespace utils{
         Vertex v1 = p2 - p1;
         Vertex v2 = p3 - p1;
 
-        return v1.x*v2.y - v1.x*v2.x;
+        return v1.x*v2.y - v1.y*v2.x;
     }
 
     double triangleArea(Vertex p1, Vertex p2, Vertex origin){

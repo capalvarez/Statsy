@@ -38,7 +38,7 @@ Mesh<Polygon> DelynoiLoader::getMesh(std::string file) {
         int numVertices = std::atoi(splittedLine[0].c_str());
 
         std::vector<Vertex> polygonPoints;
-        for (int j = 1; j < numVertices; ++j) {
+        for (int j = 1; j <= numVertices; ++j) {
             polygonPoints.push_back(vertices[std::atoi(splittedLine[j].c_str())]);
         }
 

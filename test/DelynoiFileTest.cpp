@@ -3,7 +3,7 @@
 
 int main(){
     DelynoiLoader* loader = new DelynoiLoader;
-    Mesh<Polygon> mesh = loader->getMesh("ReadFromFileMesh.txt");
+    Mesh<Polygon> mesh = loader->getMesh("simpleSquareMesh.txt");
 
     std::vector<Reportable<Polygon*>*> toReport;
     toReport.push_back(reportables::element_area());
