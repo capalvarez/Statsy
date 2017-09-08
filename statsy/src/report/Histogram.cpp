@@ -1,4 +1,6 @@
 #include <statsy/report/Histogram.h>
+#include <statsy/config/StatsyConfig.h>
+#include <cmath>
 
 Histogram::Histogram() {}
 
@@ -14,11 +16,11 @@ Histogram::Histogram(double min, double max, int bins) {
 }
 
 void Histogram::addValue(double val) {
-    //TODO: What if they are equal
     auto lower = std::lower_bound(binLimits.begin(), binLimits.end(), val);
     int dist = std::distance(binLimits.begin(), lower);
 
-    if(dist<=0 || dist>=binLimits.size()){
+    if((dist<=0 && std::abs(val-binLimits[0])>StatsyConfig::instance()->getTolerance()) ||
+            (dist>=binLimits.size() && std::abs(val-binLimits.back())>StatsyConfig::instance()->getTolerance())){
         outOfRange.push_back(val);
     } else{
         int& f = frecuency[dist];
