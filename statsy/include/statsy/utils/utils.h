@@ -3,6 +3,7 @@
 
 #include <statsy/models/geometry/Vertex.h>
 #include <vector>
+#include <string>
 
 namespace utils {
     extern double area2(Vertex p1, Vertex p2, Vertex p3);

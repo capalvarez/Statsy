@@ -1,4 +1,4 @@
-#include <statsy/reporter/reportables/Value.h>
+#include <statsy/report/reportables/Value.h>
 #include <algorithm>
 
 class Min: public Value{

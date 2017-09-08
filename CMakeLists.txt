@@ -10,4 +10,5 @@ include(GNUInstallDirs)
 # Targets that we develop here
 enable_testing()
 add_subdirectory(statsy)
+add_subdirectory(test)
 

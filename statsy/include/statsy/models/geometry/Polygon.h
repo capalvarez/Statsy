@@ -4,7 +4,7 @@
 #include <vector>
 #include <statsy/models/geometry/Vertex.h>
 #include <statsy/models/geometry/Edge.h>
-#include <statsy/models/utils/utils.h>
+#include <statsy/utils/utils.h>
 #include <statsy/models/MeshElement.h>
 
 class Polygon: public MeshElement {

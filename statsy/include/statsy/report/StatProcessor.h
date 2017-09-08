@@ -9,36 +9,26 @@
 template <typename T>
 class StatProcessor {
 private:
-    std::vector<T>::iterator it;
-    //TODO: Leave this default value elsewhere
-    int bins = 10;
+    typename std::vector<T> it;
 public:
-    StatProcessor(std::vector<T>::iterator iterator);
-    StatProcessor(std::vector<T>::iterator iterator, int bins);
-    Report giveReport(Reportable *r, int bins);
-    Report giveReport(Reportable* r);
+    StatProcessor(std::vector<T> iterator);
+    Report giveReport(Reportable<T> *r, int bins);
 };
 
 template <typename T>
-StatProcessor::StatProcessor(std::vector<T>::iterator iterator) {
+StatProcessor<T>::StatProcessor(std::vector<T> iterator) {
     this->it = iterator;
 }
 
 template <typename T>
-StatProcessor::StatProcessor(std::vector<T>::iterator iterator, int bins) {
-    this->it = iterator;
-    this->bins = bins;
-}
-
-template <typename T>
-Report StatProcessor::giveReport(Reportable *r, int bins) {
+Report StatProcessor<T>::giveReport(Reportable<T> *r, int bins) {
     double max = DBL_MIN;
     double min = DBL_MAX;
     double sum = 0, sum2 = 0;
 
-    int j = 0;
-    for (auto i = this->it.begin() ; i != this->it.end(); ++i) {
-        double value = r->getValue(*i);
+    int i;
+    for (i = 0 ; i < this->it.size(); ++i) {
+        double value = r->getValue(it[i]);
 
         if(value < min){
             min = value;
@@ -50,21 +40,16 @@ Report StatProcessor::giveReport(Reportable *r, int bins) {
 
         sum += value;
         sum2 += std::pow(value, 2);
-
-        j++;
     }
 
     Histogram histogram(min, max, bins);
-    for (auto i = this->it.begin() ; i != this->it.end(); ++i) {
-        histogram.addValue( r->getValue(*i));
+    for (i = 0 ; i < this->it.size(); ++i) {
+        histogram.addValue( r->getValue(it[i]));
     }
 
-    return Report(min, max, sum/j, (j*sum2 - sum*sum)/(j*j), histogram);
+    return Report(min, max, sum/i, (i*sum2 - sum*sum)/(i*i), histogram);
 }
 
-template <typename T>
-Report StatProcessor::giveReport(Reportable *r) {
-    return giveReport(r, this->bins);
-}
+
 
 #endif

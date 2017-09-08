@@ -24,8 +24,7 @@ double Edge::computeInnerAngle(Edge other) {
 
     double value = thisOrigin.dot(otherOrigin)/(this->getLength()*other.getLength());
 
-    //TODO: Precision errors!
-    if(value!=1){
+    if(std::abs(value-1) < StatsyConfig::instance()->getTolerance()){
         return std::acos(value);
     }
 

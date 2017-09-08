@@ -1,6 +1,9 @@
 #ifndef MESHSTATS_VERTEX_H
 #define MESHSTATS_VERTEX_H
 
+#include <cmath>
+#include <statsy/config/StatsyConfig.h>
+
 struct Vertex {
     double x;
     double y;
@@ -22,9 +25,9 @@ struct Vertex {
         return this->x*other.x + this->y*other.y;
     }
 
-    //TODO: Precision errors!
     bool operator==(const Vertex& other){
-        return this->x==other.x && this->y==other.y;
+        StatsyConfig* config = StatsyConfig::instance();
+        return std::abs(this->x-other.x) < config->getTolerance() && std::abs(this->y - other.y) < config->getTolerance();
     }
 };
 

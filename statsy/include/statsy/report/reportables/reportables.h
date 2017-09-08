@@ -1,14 +1,15 @@
 #ifndef STATSY_REPORTABLES_H
 #define STATSY_REPORTABLES_H
 
-#include <statsy/reporter/reportables/Value.h>
-#include <statsy/reporter/Reportable.h>
+#include <statsy/report/reportables/Value.h>
+#include <statsy/report/Reportable.h>
+#include <statsy/models/geometry/Polygon.h>
 
 namespace reportables{
-    Reportable* element_area();
-    Reportable* edge_length(Value* v);
-    Reportable* inner_angle(Value* v);
-    Reportable* number_sides();
+    Reportable<Polygon*>* element_area();
+    Reportable<Polygon*>* edge_length(Value* v);
+    Reportable<Polygon*>* inner_angle(Value* v);
+    Reportable<Polygon*>* number_sides();
 }
 
 #endif

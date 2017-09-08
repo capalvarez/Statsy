@@ -3,9 +3,10 @@
 
 #include <statsy/models/Mesh.h>
 
+template <typename T>
 class MeshLoader{
 public:
-    virtual Mesh getMesh(std::string fileName) = 0;
+    virtual Mesh<T> getMesh(std::string fileName) = 0;
 };
 
 #endif

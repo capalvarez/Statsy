@@ -1,4 +1,4 @@
-#include <statsy/reporter/reportables/values.h>
+#include <statsy/report/reportables/values.h>
 #include "ValueClasses.cpp"
 
 namespace values{

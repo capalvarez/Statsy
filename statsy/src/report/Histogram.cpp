@@ -6,18 +6,21 @@ Histogram::Histogram(double min, double max, int bins) {
     double delta = (max-min)/bins;
 
     binLimits.push_back(min);
+    frecuency.push_back(0);
     for (int i = 1; i <= bins; ++i) {
         binLimits.push_back(min+i*delta);
+        frecuency.push_back(0);
     }
 }
 
 void Histogram::addValue(double val) {
     auto lower = std::lower_bound(binLimits.begin(), binLimits.end(), val);
+    int dist = std::distance(binLimits.begin(), lower);
 
-    if(*lower<=0 || *lower>=binLimits.size()){
+    if(dist<=0 || dist>=binLimits.size()){
         outOfRange.push_back(val);
     } else{
-        int& f = frecuency[*lower];
+        int& f = frecuency[dist];
         f++;
     }
 }

@@ -1,17 +1,47 @@
 #include <statsy/models/Mesh.h>
-#include <statsy/report/StatProcessor.h>
 
-Mesh::Mesh() {}
+template <typename T>
+Mesh<T>::Mesh() {}
 
-Mesh::Mesh(const Mesh &other) {
+template <typename T>
+Mesh<T>::Mesh(std::vector<T *> e) {
+    this->elements.assign(e.begin(), e.end());
+}
+
+template <typename T>
+Mesh<T>::~Mesh() {
+    for (int i = 0; i < this->elements.size(); ++i) {
+        delete elements[i];
+    }
+}
+
+template <typename T>
+Mesh<T>::Mesh(const Mesh &other) {
     this->elements.assign(other.elements.begin(), other.elements.end());
 }
 
-std::vector<Report> Mesh::getReports(std::vector<Reportable*> toReport) {
-    std::vector<Report> reports;
-    StatProcessor<MeshElement*> processor(this->elements.begin());
+template <typename T>
+std::vector<Report> Mesh<T>::getReports(std::vector<Reportable<T*>*> toReport) {
+    StatsyConfig* config = StatsyConfig::instance();
 
-    for(Reportable* r : toReport){
-        reports.push_back(processor.giveReport(r, 0));
-    }
+    std::vector<int> bin(toReport.size(), config->getNumberOfBins());
+    return this->getReports(toReport, bin);
 }
+
+template <typename T>
+std::vector<Report> Mesh<T>::getReports(std::vector<Reportable<T*>*> toReport, std::vector<int> bins) {
+    std::vector<Report> reports;
+    StatProcessor<T*> processor(this->elements);
+
+    int i = 0;
+    for(Reportable<T*>* r : toReport){
+        reports.push_back(processor.giveReport(r, bins[i]));
+        i++;
+    }
+
+    return reports;
+}
+
+template class Mesh<Polygon>;
+template class Mesh<Element>;
+

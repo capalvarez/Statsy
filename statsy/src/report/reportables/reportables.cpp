@@ -1,22 +1,21 @@
-#include <statsy/reporter/reportables/reportables.h>
-#include <statsy/reporter>
+#include <statsy/report/reportables/reportables.h>
 #include "ReportableClasses.cpp"
 
 
 namespace reportables{
-    Reportable* element_area(){
+    Reportable<Polygon*>* element_area(){
         return new AreaReport();
     }
 
-    Reportable* edge_length(Value* value){
+    Reportable<Polygon*>* edge_length(Value* value){
         return new LengthReport(value);
     }
 
-    Reportable* inner_angle(Value* value){
+    Reportable<Polygon*>* inner_angle(Value* value){
         return new AngleReport(value);
     }
 
-    Reportable* number_sides(){
+    Reportable<Polygon*>* number_sides(){
         return new NumberSidesReport();
     }
 }
